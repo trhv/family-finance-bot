@@ -12,47 +12,47 @@ import {
   @Entity('accounts')
   export class Account {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
   
     @ManyToOne(() => User, user => user.accounts)
-    user: User;
+    user!: User;
   
     @ManyToOne(() => Institution, inst => inst.accounts, { nullable: true })
-    institution: Institution;
+    institution!: Institution;
   
     @Column({ nullable: true })
-    officialName: string;
+    officialName!: string;
   
     @Column({ type: 'varchar', length: 30 })
-    accountType: AccountType;
+    accountType!: AccountType;
   
     @Column({ length: 3, default: 'ILS' })
-    currency: string;
+    currency!: string;
   
     @Column({ length: 32, nullable: true })
-    accountNumberMask: string;
+    accountNumberMask!: string;
   
     @Column({ length: 4, nullable: true })
-    last4: string;
+    last4!: string;
   
     @Column({ default: true })
-    isActive: boolean;
+    isActive!: boolean;
   
     @Column({ type: 'date', nullable: true })
-    openedAt: Date;
+    openedAt!: Date;
   
     @Column({ type: 'date', nullable: true })
-    closedAt: Date;
+    closedAt!: Date;
   
     @CreateDateColumn({ type: 'datetime' })
-    createdAt: Date;
+    createdAt!: Date;
   
     @OneToMany(() => Transaction, tx => tx.account)
-    transactions: Transaction[];
+    transactions!: Transaction[];
   
     @OneToMany(() => AccountAlias, alias => alias.account)
-    aliases: AccountAlias[];
+    aliases!: AccountAlias[];
   
     @OneToMany(() => AccountBalance, bal => bal.account)
-    balances: AccountBalance[];
+    balances!: AccountBalance[];
   }

@@ -9,59 +9,59 @@ import {
   @Entity('transactions')
   export class Transaction {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
   
     @ManyToOne(() => User, user => user.transactions)
-    user: User;
+    user!: User;
   
     @ManyToOne(() => Account, acc => acc.transactions)
-    account: Account;
+    account!: Account;
   
     @Column({ nullable: true })
-    externalId: string;
+    externalId!: string;
   
     @Column({ type: 'date' })
-    bookingDate: Date;
+    bookingDate!: Date;
   
     @Column({ type: 'date', nullable: true })
-    valueDate: Date;
+    valueDate!: Date | null;
   
     @Column({ type: 'decimal', precision: 14, scale: 2 })
-    amount: string;
+    amount!: string;
   
     @Column({ length: 3, default: 'ILS' })
-    currency: string;
+    currency!: string;
   
     @Column({ type: 'text' })
-    descriptionRaw: string;
+    descriptionRaw!: string;
   
     @Column({ type: 'text', nullable: true })
-    descriptionClean: string;
+    descriptionClean!: string;
   
     @ManyToOne(() => Category, cat => cat.transactions, { nullable: true })
-    category: Category;
+    category!: Category;
   
     @Column({ type: 'simple-json', nullable: true })
-    tags: string[];
+    tags!: string[];
   
     @Column({ default: false })
-    isPending: boolean;
+    isPending!: boolean;
   
     @Column({ default: false })
-    isSplitChild: boolean;
+    isSplitChild!: boolean;
   
     @ManyToOne(() => Transaction, tx => tx.children, { nullable: true })
-    parentTransaction: Transaction;
+    parentTransaction!: Transaction;
   
     @OneToMany(() => Transaction, tx => tx.parentTransaction)
-    children: Transaction[];
+    children!: Transaction[];
   
     @Column({ type: 'json', nullable: true })
-    metadata: any;
+    metadata!: any;
   
     @CreateDateColumn({ type: 'datetime' })
-    createdAt: Date;
+    createdAt!: Date;
   
     @UpdateDateColumn({ type: 'datetime' })
-    updatedAt: Date;
+    updatedAt!: Date;
   }

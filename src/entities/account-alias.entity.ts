@@ -5,23 +5,23 @@ import { Account } from './account.entity';
 @Entity('account_aliases')
 export class AccountAlias {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @ManyToOne(() => User, user => user.aliases)
-  user: User;
+  user!: User;
 
   @ManyToOne(() => Account, acc => acc.aliases)
-  account: Account;
+  account!: Account;
 
   @Column({ length: 100 })
-  alias: string;
+  alias!: string;
 
   @Column({ default: true })
-  isPrimary: boolean;
+  isPrimary!: boolean;
 
   @CreateDateColumn({ type: 'datetime' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @Column({ type: 'datetime', nullable: true })
-  validUntil: Date;
+  validUntil!: Date;
 }

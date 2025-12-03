@@ -9,29 +9,29 @@ import {
   @Entity('categories')
   export class Category {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
   
     @ManyToOne(() => User, user => user.categories, { nullable: true })
-    user: User;
+    user!: User;
   
     @Column({ length: 100 })
-    name: string;
+    name!: string;
   
     @ManyToOne(() => Category, cat => cat.children, { nullable: true })
-    parent: Category;
+    parent!: Category;
   
     @OneToMany(() => Category, cat => cat.parent)
-    children: Category[];
+    children!: Category[];
   
     @Column({ type: 'varchar', length: 20 })
-    direction: CategoryDirection;
+    direction!: CategoryDirection;
   
     @Column({ default: false })
-    isSystem: boolean;
+    isSystem!: boolean;
   
     @CreateDateColumn({ type: 'datetime' })
-    createdAt: Date;
+    createdAt!: Date;
   
     @OneToMany(() => Transaction, tx => tx.category)
-    transactions: Transaction[];
+    transactions!: Transaction[];
   }

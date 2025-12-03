@@ -9,29 +9,29 @@ import {
   @Entity('sync_runs')
   export class SyncRun {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
   
     @ManyToOne(() => User, user => user.syncRuns)
-    user: User;
+    user!: User;
   
     @ManyToOne(() => Institution, inst => inst.syncRuns, { nullable: true })
-    institution: Institution;
+    institution!: Institution;
   
     @CreateDateColumn({ type: 'datetime' })
-    startedAt: Date;
+    startedAt!: Date;
   
     @Column({ type: 'datetime', nullable: true })
-    finishedAt: Date;
+    finishedAt!: Date;
   
     @Column({ type: 'varchar', length: 20 })
-    status: SyncStatus;
+    status!: SyncStatus;
   
     @Column({ type: 'varchar', length: 30 })
-    sourceType: SyncSourceType;
+    sourceType!: SyncSourceType;
   
     @Column({ type: 'json', nullable: true })
-    details: any;
+    details!: any;
   
     @CreateDateColumn({ type: 'datetime' })
-    createdAt: Date;
+    createdAt!: Date;
   }
