@@ -8,6 +8,7 @@ import { AnalyticsService } from './analytics.service';
 import { MortgageService } from './mortgage.service';
 import { SyncService } from './sync.service';
 import { QAFacadeService } from './qa-facade.service';
+import { TextIntentService } from './text-intent.service';
 
 const accountService = new AccountService(AppDataSource);
 const aliasService = new AliasService(AppDataSource);
@@ -16,13 +17,14 @@ const transactionService = new TransactionService(AppDataSource);
 const analyticsService = new AnalyticsService(AppDataSource);
 const syncService = new SyncService(AppDataSource);
 const mortgageService = new MortgageService(AppDataSource, accountService);
-
 const qaFacadeService = new QAFacadeService(
   analyticsService,
   accountService,
   aliasService,
   mortgageService,
 );
+
+const textIntentService = new TextIntentService();
 
 export const services = {
   accountService,
@@ -33,4 +35,5 @@ export const services = {
   syncService,
   mortgageService,
   qaFacadeService,
+  textIntentService,
 };
