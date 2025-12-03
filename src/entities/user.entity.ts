@@ -12,35 +12,35 @@ import {
   @Entity('users')
   export class User {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
   
     @Column({ length: 32, unique: true })
-    phoneNumber: string;
+    phoneNumber!: string;
   
     @Column({ length: 100 })
-    displayName: string;
+    displayName!: string;
   
     @Column({ length: 10, default: 'he-IL' })
-    locale: string;
+    locale!: string;
   
     @CreateDateColumn({ type: 'datetime' })
-    createdAt: Date;
+    createdAt!: Date;
   
     @OneToMany(() => Account, acc => acc.user)
-    accounts: Account[];
+    accounts!: Account[];
   
     @OneToMany(() => Category, cat => cat.user)
-    categories: Category[];
+    categories!: Category[];
   
     @OneToMany(() => Transaction, tx => tx.user)
-    transactions: Transaction[];
+    transactions!: Transaction[];
   
     @OneToMany(() => AccountAlias, alias => alias.user)
-    aliases: AccountAlias[];
+    aliases!: AccountAlias[];
   
     @OneToMany(() => AccountBalance, bal => bal.user)
-    balances: AccountBalance[];
+    balances!: AccountBalance[];
   
     @OneToMany(() => SyncRun, sync => sync.user)
-    syncRuns: SyncRun[];
+    syncRuns!: SyncRun[];
   }

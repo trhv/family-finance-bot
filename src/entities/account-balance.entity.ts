@@ -5,26 +5,26 @@ import { Account } from './account.entity';
 @Entity('account_balances')
 export class AccountBalance {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @ManyToOne(() => User, user => user.balances)
-  user: User;
+  user!: User;
 
   @ManyToOne(() => Account, acc => acc.balances)
-  account: Account;
+  account!: Account;
 
   @Column({ type: 'date' })
-  asOfDate: Date;
+  asOfDate!: Date;
 
   @Column({ type: 'decimal', precision: 14, scale: 2 })
-  balanceCurrent: string;
+  balanceCurrent!: string;
 
   @Column({ type: 'decimal', precision: 14, scale: 2, nullable: true })
-  balanceAvailable: string;
+  balanceAvailable!: string;
 
   @Column({ length: 3, default: 'ILS' })
-  currency: string;
+  currency!: string;
 
   @CreateDateColumn({ type: 'datetime' })
-  createdAt: Date;
+  createdAt!: Date;
 }

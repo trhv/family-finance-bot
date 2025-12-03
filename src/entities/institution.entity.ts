@@ -8,26 +8,26 @@ import {
   @Entity('institutions')
   export class Institution {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
   
     @Column({ length: 100 })
-    name: string;
+    name!: string;
   
     @Column({ length: 2 })
-    country: string;
+    country!: string;
   
     @Column({ type: 'varchar', length: 50 })
-    type: InstitutionType;
+    type!: InstitutionType;
   
     @Column({ type: 'json', nullable: true })
-    metadata: any;
+    metadata!: any;
   
     @CreateDateColumn({ type: 'datetime' })
-    createdAt: Date;
+    createdAt!: Date;
   
     @OneToMany(() => Account, acc => acc.institution)
-    accounts: Account[];
+    accounts!: Account[];
   
     @OneToMany(() => SyncRun, sync => sync.institution)
-    syncRuns: SyncRun[];
+    syncRuns!: SyncRun[];
   }
