@@ -1,3 +1,4 @@
+// src/services/index.ts
 import { AppDataSource } from '../data/data-source';
 import { AccountService } from './account.service';
 import { AliasService } from './alias.service';
@@ -6,6 +7,7 @@ import { TransactionService } from './transaction.service';
 import { AnalyticsService } from './analytics.service';
 import { MortgageService } from './mortgage.service';
 import { SyncService } from './sync.service';
+import { QAFacadeService } from './qa-facade.service';
 
 const accountService = new AccountService(AppDataSource);
 const aliasService = new AliasService(AppDataSource);
@@ -15,6 +17,13 @@ const analyticsService = new AnalyticsService(AppDataSource);
 const syncService = new SyncService(AppDataSource);
 const mortgageService = new MortgageService(AppDataSource, accountService);
 
+const qaFacadeService = new QAFacadeService(
+  analyticsService,
+  accountService,
+  aliasService,
+  mortgageService,
+);
+
 export const services = {
   accountService,
   aliasService,
@@ -23,4 +32,5 @@ export const services = {
   analyticsService,
   syncService,
   mortgageService,
+  qaFacadeService,
 };
