@@ -20,7 +20,7 @@ export class AccountBalance {
   balanceCurrent!: string;
 
   @Column({ type: 'decimal', precision: 14, scale: 2, nullable: true })
-  balanceAvailable!: string;
+  balanceAvailable!: string | null;
 
   @Column({ length: 3, default: 'ILS' })
   currency!: string;
